@@ -3,6 +3,13 @@ body {
     color: aqua;
 }
 
+header {
+    border: solid 2px rgb(28, 67, 101);
+    font-size: 32px;
+    padding: 10px;
+    color: rgb(96, 119, 138);
+}
+
 h1 {
     font-size: 30px;
     text-align: center;
