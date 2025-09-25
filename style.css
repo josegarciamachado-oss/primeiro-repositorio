@@ -1,13 +1,13 @@
 body {
     background-color: blue;
-    color: aqua;
+    color: rgb(255, 0, 8);
 }
 
 header {
-    border: solid 2px rgb(51, 148, 233);
+    border: solid 2px rgb(0, 0, 0);
     font-size: 32px;
     padding: 10px;
-    color: rgb(7, 141, 251);
+    color: rgb(251, 7, 7);
 }
 
 h1 {
@@ -18,5 +18,5 @@ h1 {
 
 p {
     font-size: 16px;
-    color: aquamarine;
+    color: rgb(255, 255, 255);
 }
