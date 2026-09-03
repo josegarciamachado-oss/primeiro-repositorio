@@ -5,95 +5,238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixelVerse Games - Catálogo</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121214;
-            color: #ffffff;
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
+        body {
+            background-color: #0d0e12;
+            color: #e1e1e6;
+            padding: 30px 20px;
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
         }
-        .header {
-            border-bottom: 2px solid #8257e5;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
         }
+
+        header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #9466ff, #04d361);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #a8a8b3;
+            font-size: 1.1rem;
+        }
+
+        /* Banner de explicação do serviço */
         .servico-info {
-            background-color: #202024;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 25px;
+            background: linear-gradient(135deg, #181920 0%, #20222c 100%);
+            border: 1px solid #2e303d;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
         }
-        .filtros {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+
+        .servico-info h2 {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 12px;
         }
-        .filtros input, .filtros select {
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #323238;
-            background-color: #202024;
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-        }
-        .filtros input {
-            flex: 1;
-            min-width: 200px;
-        }
-        .card-grid {
+
+        .servico-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
         }
-        .card {
-            background-color: #202024;
-            border: 1px solid #323238;
-            border-radius: 8px;
+
+        .servico-card {
+            background-color: #121318;
             padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #9466ff;
         }
-        .badge {
+
+        .servico-card.compra {
+            border-left-color: #f75a68;
+        }
+
+        .servico-card h3 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .servico-card p {
+            font-size: 0.9rem;
+            color: #a8a8b3;
+        }
+
+        /* Área de Filtros */
+        .filtros {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .filtros input, .filtros select {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #2e303d;
+            background-color: #181920;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .filtros input:focus, .filtros select:focus {
+            border-color: #9466ff;
+        }
+
+        .filtros input {
+            flex: 2;
+            min-width: 200px;
+        }
+
+        .filtros select {
+            flex: 1;
+            min-width: 160px;
+            cursor: pointer;
+        }
+
+        /* Grid de Jogos */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #181920;
+            border: 1px solid #2e303d;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #9466ff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .card-detalhes {
+            margin-bottom: 15px;
+        }
+
+        .genero {
             display: inline-block;
-            padding: 4px 8px;
+            background-color: #2e303d;
+            color: #04d361;
+            padding: 2px 8px;
             border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-top: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
-        .badge-sub { background-color: #04d361; color: #000; }
-        .badge-compra { background-color: #e16e0e; color: #fff; }
+
+        .preco {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .badge {
+            display: block;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-sub {
+            background-color: rgba(4, 211, 97, 0.15);
+            color: #04d361;
+            border: 1px solid #04d361;
+        }
+
+        .badge-compra {
+            background-color: rgba(247, 90, 104, 0.15);
+            color: #f75a68;
+            border: 1px solid #f75a68;
+        }
+
         .sem-resultados {
-            color: #8d8d99;
+            color: #a8a8b3;
             grid-column: 1 / -1;
+            text-align: center;
+            padding: 4px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header>
             <h1>PixelVerse Games</h1>
-        </div>
+            <p>Sua plataforma definitiva de jogos online</p>
+        </header>
 
         <div class="servico-info">
-            <h2>Como funciona nosso serviço</h2>
-            <p><strong>1. Assinatura Mensal (R$ 29,90/mês):</strong> Jogue todos os títulos marcados como 'Incluso na Assinatura'.</p>
-            <p><strong>2. Compra Avulsa:</strong> Adquira qualquer jogo individualmente para ser seu para sempre.</p>
+            <h2>Como funciona o serviço?</h2>
+            <div class="servico-grid">
+                <div class="servico-card">
+                    <h3>Assinatura PixelPass (R$ 29,90/mês)</h3>
+                    <p>Acesso ilimitado a todos os jogos marcados como <strong>Incluso no Plano</strong>.</p>
+                </div>
+                <div class="servico-card compra">
+                    <h3>Loja de Compras</h3>
+                    <p>Compre qualquer título individualmente e mantenha na sua biblioteca para sempre.</p>
+                </div>
+            </div>
         </div>
 
-        <h2>Catálogo de Jogos</h2>
-        
         <div class="filtros">
-            <input type="text" id="campoBusca" placeholder="Buscar por título...">
+            <input type="text" id="campoBusca" placeholder="Buscar por nome do jogo...">
             <select id="filtroGenero">
                 <option value="Todos">Todos os Gêneros</option>
                 <option value="RPG">RPG</option>
                 <option value="Corrida">Corrida</option>
                 <option value="Estratégia">Estratégia</option>
+                <option value="Ação">Ação</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Esporte">Esporte</option>
+            </select>
+            <select id="filtroPlano">
+                <option value="Todos">Todos os Planos</option>
+                <option value="Incluso">Incluso na Assinatura</option>
+                <option value="Avulso">Apenas Compra</option>
             </select>
         </div>
 
@@ -102,29 +245,42 @@
 
     <script>
         const jogos = [
-            { titulo: "Cyber Odyssey", genero: "RPG", preco: 149.90, inclusoNoPlano: true },
-            { titulo: "Speed Racers", genero: "Corrida", preco: 89.90, inclusoNoPlano: true },
-            { titulo: "Galactic Legends", genero: "Estratégia", preco: 199.90, inclusoNoPlano: false }
+            { titulo: "Cyber Odyssey 2077", genero: "RPG", preco: 149.90, inclusoNoPlano: true },
+            { titulo: "Speed Racers Unlimited", genero: "Corrida", preco: 89.90, inclusoNoPlano: true },
+            { titulo: "Galactic Legends", genero: "Estratégia", preco: 199.90, inclusoNoPlano: false },
+            { titulo: "Shadow Strike", genero: "Ação", preco: 120.00, inclusoNoPlano: true },
+            { titulo: "Kingdom Quest", genero: "RPG", preco: 159.90, inclusoNoPlano: false },
+            { titulo: "Pro Football 2026", genero: "Esporte", preco: 249.90, inclusoNoPlano: false },
+            { titulo: "Pixel Dungeon Adventure", genero: "Aventura", preco: 49.90, inclusoNoPlano: true },
+            { titulo: "Space Warfare", genero: "Estratégia", preco: 79.90, inclusoNoPlano: true },
+            { titulo: "Urban Drift", genero: "Corrida", preco: 59.90, inclusoNoPlano: true }
         ];
 
         const container = document.getElementById('catalogo');
         const campoBusca = document.getElementById('campoBusca');
         const filtroGenero = document.getElementById('filtroGenero');
+        const filtroPlano = document.getElementById('filtroPlano');
 
         function renderizarJogos() {
             const termoBusca = campoBusca.value.toLowerCase();
             const generoSelecionado = filtroGenero.value;
+            const planoSelecionado = filtroPlano.value;
 
             container.innerHTML = '';
 
             const jogosFiltrados = jogos.filter(jogo => {
                 const combinaTitulo = jogo.titulo.toLowerCase().includes(termoBusca);
                 const combinaGenero = generoSelecionado === 'Todos' || jogo.genero === generoSelecionado;
-                return combinaTitulo && combinaGenero;
+                
+                let combinaPlano = true;
+                if (planoSelecionado === 'Incluso') combinaPlano = jogo.inclusoNoPlano;
+                if (planoSelecionado === 'Avulso') combinaPlano = !jogo.inclusoNoPlano;
+
+                return combinaTitulo && combinaGenero && combinaPlano;
             });
 
             if (jogosFiltrados.length === 0) {
-                container.innerHTML = '<p class="sem-resultados">Nenhum jogo encontrado com os filtros aplicados.</p>';
+                container.innerHTML = '<p class="sem-resultados">Nenhum jogo encontrado com os filtros selecionados.</p>';
                 return;
             }
 
@@ -133,23 +289,26 @@
                 card.className = 'card';
                 
                 const badgeClass = jogo.inclusoNoPlano ? 'badge-sub' : 'badge-compra';
-                const badgeTexto = jogo.inclusoNoPlano ? 'Incluso na Assinatura' : 'Apenas Compra Avulsa';
+                const badgeTexto = jogo.inclusoNoPlano ? 'Incluso na Assinatura' : 'Compra Avulsa';
 
                 card.innerHTML = `
-                    <h3>${jogo.titulo}</h3>
-                    <p>Gênero: ${jogo.genero}</p>
-                    <p>Preço: R$ ${jogo.preco.toFixed(2)}</p>
+                    <div>
+                        <span class="genero">${jogo.genero}</span>
+                        <h3>${jogo.titulo}</h3>
+                    </div>
+                    <div class="card-detalhes">
+                        <p class="preco">R$ ${jogo.preco.toFixed(2)}</p>
+                    </div>
                     <span class="badge ${badgeClass}">${badgeTexto}</span>
                 `;
                 container.appendChild(card);
             });
         }
 
-        // Eventos para filtrar em tempo real
         campoBusca.addEventListener('input', renderizarJogos);
         filtroGenero.addEventListener('change', renderizarJogos);
+        filtroPlano.addEventListener('change', renderizarJogos);
 
-        // Renderização inicial
         renderizarJogos();
     </script>
 </body>
