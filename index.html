@@ -1,48 +1,95 @@
-class Jogo:
-    def __init__(self, titulo, genero, preco, incluso_no_plano):
-        self.titulo = titulo
-        self.genero = genero
-        self.preco = preco
-        self.incluso_no_plano = incluso_no_plano  # True se estiver na assinatura
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelVerse Games - Catálogo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121214;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header {
+            border-bottom: 2px solid #8257e5;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .servico-info {
+            background-color: #202024;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 15px;
+        }
+        .card {
+            background-color: #202024;
+            border: 1px solid #323238;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .badge-sub { background-color: #04d361; color: #000; }
+        .badge-compra { background-color: #e16e0e; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>PixelVerse Games</h1>
+        </div>
 
-    def exibir_detalhes(self):
-        status_plano = "Incluso na Assinatura" if self.incluso_no_plano else "Apenas Compra Avulsa"
-        return f"- {self.titulo} | Gênero: {self.genero} | Preço: R${self.preco:.2f} [{status_plano}]"
+        <div class="servico-info">
+            <h2>Como funciona nosso serviço</h2>
+            <p><strong>1. Assinatura Mensal (R$ 29,90/mês):</strong> Jogue todos os títulos marcados como 'Incluso na Assinatura'.</p>
+            <p><strong>2. Compra Avulsa:</strong> Adquira qualquer jogo individualmente para ser seu para sempre.</p>
+        </div>
 
+        <h2>Catálogo de Jogos</h2>
+        <div class="card-grid" id="catalogo"></div>
+    </div>
 
-class CatalogoJogos:
-    def __init__(self, nome_empresa, preco_assinatura):
-        self.nome_empresa = nome_empresa
-        self.preco_assinatura = preco_assinatura
-        self.jogos = []
+    <script>
+        const jogos = [
+            { titulo: "Cyber Odyssey", genero: "RPG", preco: 149.90, inclusoNoPlano: true },
+            { titulo: "Speed Racers", genero: "Corrida", preco: 89.90, inclusoNoPlano: true },
+            { titulo: "Galactic Legends", genero: "Estratégia", preco: 199.90, inclusoNoPlano: false }
+        ];
 
-    def adicionar_jogo(self, jogo):
-        self.jogos.append(jogo)
+        const container = document.getElementById('catalogo');
 
-    def mostrar_servico(self):
-        print(f"=== BEM-VINDO À {self.nome_empresa.upper()} ===")
-        print(f"Como funciona nosso serviço:")
-        print(f"1. Assinatura Mensal: Por R${self.preco_assinatura:.2f}/mês, você joga todos os títulos marcados como 'Incluso na Assinatura'.")
-        print(f"2. Compra Avulsa: Você pode comprar qualquer jogo individualmente para ser seu para sempre.")
-        print("-" * 50)
+        jogos.forEach(jogo => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            
+            const badgeClass = jogo.inclusoNoPlano ? 'badge-sub' : 'badge-compra';
+            const badgeTexto = jogo.inclusoNoPlano ? 'Incluso na Assinatura' : 'Apenas Compra Avulsa';
 
-    def listar_catalogo(self):
-        print("CATÁLOGO DE JOGOS DISPONÍVEIS:")
-        for jogo in self.jogos:
-            print(jogo.exibir_detalhes())
-        print("-" * 50)
-
-
-# --- Demonstração do uso ---
-
-# Criando a empresa de jogos
-empresa = CatalogoJogos(nome_empresa="PixelVerse Games", preco_assinatura=29.90)
-
-# Cadastrando jogos
-empresa.adicionar_jogo(Jogo("Cyber Odyssey", "RPG", 149.90, incluso_no_plano=True))
-empresa.adicionar_jogo(Jogo("Speed Racers", "Corrida", 89.90, incluso_no_plano=True))
-empresa.adicionar_jogo(Jogo("Galactic Legends", "Estratégia", 199.90, incluso_no_plano=False))
-
-# Exibindo o serviço e o catálogo
-empresa.mostrar_servico()
-empresa.listar_catalogo()
+            card.innerHTML = `
+                <h3>${jogo.titulo}</h3>
+                <p>Gênero: ${jogo.genero}</p>
+                <p>Preço: R$ ${jogo.preco.toFixed(2)}</p>
+                <span class="badge ${badgeClass}">${badgeTexto}</span>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
