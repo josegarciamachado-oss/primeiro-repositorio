@@ -1,56 +1,48 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+class Jogo:
+    def __init__(self, titulo, genero, preco, incluso_no_plano):
+        self.titulo = titulo
+        self.genero = genero
+        self.preco = preco
+        self.incluso_no_plano = incluso_no_plano  # True se estiver na assinatura
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    def exibir_detalhes(self):
+        status_plano = "Incluso na Assinatura" if self.incluso_no_plano else "Apenas Compra Avulsa"
+        return f"- {self.titulo} | Gênero: {self.genero} | Preço: R${self.preco:.2f} [{status_plano}]"
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-    <title> JOSÉFLIX </title>
-    <link rel="stylesheet" href="style.css">
-</head>
+class CatalogoJogos:
+    def __init__(self, nome_empresa, preco_assinatura):
+        self.nome_empresa = nome_empresa
+        self.preco_assinatura = preco_assinatura
+        self.jogos = []
 
-<body>
-    <header> ALLURAFLIX </header>
+    def adicionar_jogo(self, jogo):
+        self.jogos.append(jogo)
 
-    <section class="chamada">
-        <div class="chamada-texto">
-            <h1>Através do aranhaverso supera o primeiro filme?</h1>
-            <p>#homem-aranha</p>
-        </div>
+    def mostrar_servico(self):
+        print(f"=== BEM-VINDO À {self.nome_empresa.upper()} ===")
+        print(f"Como funciona nosso serviço:")
+        print(f"1. Assinatura Mensal: Por R${self.preco_assinatura:.2f}/mês, você joga todos os títulos marcados como 'Incluso na Assinatura'.")
+        print(f"2. Compra Avulsa: Você pode comprar qualquer jogo individualmente para ser seu para sempre.")
+        print("-" * 50)
 
-        <div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/gt_fAE1Eg2Q?si=TK34LZaL4MRzXRR3"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-    </section>
+    def listar_catalogo(self):
+        print("CATÁLOGO DE JOGOS DISPONÍVEIS:")
+        for jogo in self.jogos:
+            print(jogo.exibir_detalhes())
+        print("-" * 50)
 
-    <section class="categoria">
-        <h2>Filmes e séries</h2>
-        <div class="categoria-videos">
-            <a href="https://www.youtube.com/watch?v=qFvXItKwcds">
-                <img src="https://img.youtube.com/vi/qFvXItKwcds/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=Npl_LORgOjo">
-                <img src="https://img.youtube.com/vi/Npl_LORgOjo/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=FvRmEapoHRc">
-                <img src="https://img.youtube.com/vi/FvRmEapoHRc/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=Ipkw_hWW-Hw">
-                <img src="https://img.youtube.com/vi/Ipkw_hWW-Hw/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=OxUxZTNkamU">
-                <img src="https://img.youtube.com/vi/OxUxZTNkamU/maxresdefault.jpg" />
-            </a>
 
-    </section>
+# --- Demonstração do uso ---
 
-</body>
+# Criando a empresa de jogos
+empresa = CatalogoJogos(nome_empresa="PixelVerse Games", preco_assinatura=29.90)
 
-</html>
+# Cadastrando jogos
+empresa.adicionar_jogo(Jogo("Cyber Odyssey", "RPG", 149.90, incluso_no_plano=True))
+empresa.adicionar_jogo(Jogo("Speed Racers", "Corrida", 89.90, incluso_no_plano=True))
+empresa.adicionar_jogo(Jogo("Galactic Legends", "Estratégia", 199.90, incluso_no_plano=False))
+
+# Exibindo o serviço e o catálogo
+empresa.mostrar_servico()
+empresa.listar_catalogo()
