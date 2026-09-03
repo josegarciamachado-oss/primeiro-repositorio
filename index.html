@@ -27,6 +27,25 @@
             border-radius: 8px;
             margin-bottom: 25px;
         }
+        .filtros {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .filtros input, .filtros select {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #323238;
+            background-color: #202024;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+        .filtros input {
+            flex: 1;
+            min-width: 200px;
+        }
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -48,6 +67,10 @@
         }
         .badge-sub { background-color: #04d361; color: #000; }
         .badge-compra { background-color: #e16e0e; color: #fff; }
+        .sem-resultados {
+            color: #8d8d99;
+            grid-column: 1 / -1;
+        }
     </style>
 </head>
 <body>
@@ -63,6 +86,17 @@
         </div>
 
         <h2>Catálogo de Jogos</h2>
+        
+        <div class="filtros">
+            <input type="text" id="campoBusca" placeholder="Buscar por título...">
+            <select id="filtroGenero">
+                <option value="Todos">Todos os Gêneros</option>
+                <option value="RPG">RPG</option>
+                <option value="Corrida">Corrida</option>
+                <option value="Estratégia">Estratégia</option>
+            </select>
+        </div>
+
         <div class="card-grid" id="catalogo"></div>
     </div>
 
@@ -74,22 +108,49 @@
         ];
 
         const container = document.getElementById('catalogo');
+        const campoBusca = document.getElementById('campoBusca');
+        const filtroGenero = document.getElementById('filtroGenero');
 
-        jogos.forEach(jogo => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            
-            const badgeClass = jogo.inclusoNoPlano ? 'badge-sub' : 'badge-compra';
-            const badgeTexto = jogo.inclusoNoPlano ? 'Incluso na Assinatura' : 'Apenas Compra Avulsa';
+        function renderizarJogos() {
+            const termoBusca = campoBusca.value.toLowerCase();
+            const generoSelecionado = filtroGenero.value;
 
-            card.innerHTML = `
-                <h3>${jogo.titulo}</h3>
-                <p>Gênero: ${jogo.genero}</p>
-                <p>Preço: R$ ${jogo.preco.toFixed(2)}</p>
-                <span class="badge ${badgeClass}">${badgeTexto}</span>
-            `;
-            container.appendChild(card);
-        });
+            container.innerHTML = '';
+
+            const jogosFiltrados = jogos.filter(jogo => {
+                const combinaTitulo = jogo.titulo.toLowerCase().includes(termoBusca);
+                const combinaGenero = generoSelecionado === 'Todos' || jogo.genero === generoSelecionado;
+                return combinaTitulo && combinaGenero;
+            });
+
+            if (jogosFiltrados.length === 0) {
+                container.innerHTML = '<p class="sem-resultados">Nenhum jogo encontrado com os filtros aplicados.</p>';
+                return;
+            }
+
+            jogosFiltrados.forEach(jogo => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                const badgeClass = jogo.inclusoNoPlano ? 'badge-sub' : 'badge-compra';
+                const badgeTexto = jogo.inclusoNoPlano ? 'Incluso na Assinatura' : 'Apenas Compra Avulsa';
+
+                card.innerHTML = `
+                    <h3>${jogo.titulo}</h3>
+                    <p>Gênero: ${jogo.genero}</p>
+                    <p>Preço: R$ ${jogo.preco.toFixed(2)}</p>
+                    <span class="badge ${badgeClass}">${badgeTexto}</span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Eventos para filtrar em tempo real
+        campoBusca.addEventListener('input', renderizarJogos);
+        filtroGenero.addEventListener('change', renderizarJogos);
+
+        // Renderização inicial
+        renderizarJogos();
     </script>
 </body>
 </html>
