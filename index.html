@@ -15,34 +15,33 @@
         body {
             background-color: #0d0e12;
             color: #e1e1e6;
-            padding: 0; /* Remove padding do body para o banner ocupar toda a largura */
+            padding: 30px 20px;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 20px; /* Adiciona padding ao container principal */
         }
 
+        /* Estrutura do Cabeçalho com Logo */
         header {
-            text-align: center;
             margin-bottom: 40px;
         }
 
-        /* Estilização do Banner */
-        .banner-container {
-            width: 100%;
-            height: 300px; /* Altura ajustável do banner */
-            overflow: hidden;
-            border-bottom: 3px solid #9466ff;
-            margin-bottom: 20px;
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .banner-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
-            display: block;
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(148, 102, 255, 0.5);
         }
 
         header h1 {
@@ -50,8 +49,7 @@
             background: linear-gradient(90deg, #9466ff, #04d361);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-top: 10px;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         header p {
@@ -277,14 +275,15 @@
     </style>
 </head>
 <body>
-    <div class="banner-container">
-        <img src="banner-pixelverse.png" alt="Banner PixelVerse Games - Mundos Digitais">
-    </div>
-
     <div class="container">
         <header>
-            <h1>PixelVerse Games</h1>
-            <p>Conectando jogadores aos melhores universos digitais</p>
+            <div class="logo-wrapper">
+                <img src="logo-pixelverse.png" alt="Logo PixelVerse Games" class="logo-img">
+                <div>
+                    <h1>PixelVerse Games</h1>
+                    <p>Conectando jogadores aos melhores universos digitais</p>
+                </div>
+            </div>
         </header>
 
         <section class="sobre-empresa">
@@ -350,7 +349,6 @@
     </div>
 
     <script>
-        // ... (O JavaScript permanece o mesmo do passo anterior)
         const jogos = [
             { titulo: "Cyber Odyssey 2077", genero: "RPG", preco: 149.90, inclusoNoPlano: true },
             { titulo: "Speed Racers Unlimited", genero: "Corrida", preco: 89.90, inclusoNoPlano: true },
