@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelVerse Games - Catálogo</title>
+    <title>PixelVerse Games - Sobre & Catálogo</title>
     <style>
         * {
             box-sizing: border-box;
@@ -25,11 +25,11 @@
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             background: linear-gradient(90deg, #9466ff, #04d361);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -41,20 +41,70 @@
             font-size: 1.1rem;
         }
 
-        /* Banner de explicação do serviço */
+        /* Seção Sobre a Empresa */
+        .sobre-empresa {
+            background-color: #181920;
+            border: 1px solid #2e303d;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .sobre-empresa h2 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            border-left: 4px solid #9466ff;
+            padding-left: 10px;
+        }
+
+        .sobre-empresa p {
+            color: #a8a8b3;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background-color: #121318;
+            border: 1px solid #2e303d;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 1.8rem;
+            color: #04d361;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 0.85rem;
+            color: #a8a8b3;
+            margin-bottom: 0;
+        }
+
+        /* Seção Como Funciona o Serviço */
         .servico-info {
             background: linear-gradient(135deg, #181920 0%, #20222c 100%);
             border: 1px solid #2e303d;
             border-radius: 12px;
             padding: 24px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
         }
 
         .servico-info h2 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .servico-grid {
@@ -65,7 +115,7 @@
 
         .servico-card {
             background-color: #121318;
-            padding: 15px;
+            padding: 18px;
             border-radius: 8px;
             border-left: 4px solid #9466ff;
         }
@@ -75,17 +125,24 @@
         }
 
         .servico-card h3 {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #fff;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .servico-card p {
             font-size: 0.9rem;
             color: #a8a8b3;
+            line-height: 1.4;
         }
 
-        /* Área de Filtros */
+        /* Seção Filtros */
+        .secao-titulo {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
         .filtros {
             display: flex;
             gap: 12px;
@@ -119,7 +176,7 @@
             cursor: pointer;
         }
 
-        /* Grid de Jogos */
+        /* Grid do Catálogo */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -197,7 +254,7 @@
             color: #a8a8b3;
             grid-column: 1 / -1;
             text-align: center;
-            padding: 4px;
+            padding: 20px;
         }
     </style>
 </head>
@@ -205,22 +262,52 @@
     <div class="container">
         <header>
             <h1>PixelVerse Games</h1>
-            <p>Sua plataforma definitiva de jogos online</p>
+            <p>Conectando jogadores aos melhores universos digitais</p>
         </header>
 
-        <div class="servico-info">
-            <h2>Como funciona o serviço?</h2>
+        <!-- SEÇÃO: Sobre a Empresa -->
+        <section class="sobre-empresa">
+            <h2>Sobre a PixelVerse Games</h2>
+            <p>
+                Fundada com a missão de democratizar o acesso a jogos de alta qualidade, a PixelVerse Games é uma publicadora e distribuidora digital focada na experiência do jogador. Oferecemos uma infraestrutura completa de jogos na nuvem, download rápido e um ecossistema que integra comunidade, eventos e vantagens exclusivas.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>+500K</h3>
+                    <p>Jogadores Ativos</p>
+                </div>
+                <div class="stat-card">
+                    <h3>100+</h3>
+                    <p>Títulos no Catálogo</p>
+                </div>
+                <div class="stat-card">
+                    <h3>99.9%</h3>
+                    <p>Uptime dos Servidores</p>
+                </div>
+                <div class="stat-card">
+                    <h3>24/7</h3>
+                    <p>Suporte Especializado</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: Como Funciona o Serviço -->
+        <section class="servico-info">
+            <h2>Como Funciona Nosso Serviço?</h2>
             <div class="servico-grid">
                 <div class="servico-card">
                     <h3>Assinatura PixelPass (R$ 29,90/mês)</h3>
-                    <p>Acesso ilimitado a todos os jogos marcados como <strong>Incluso no Plano</strong>.</p>
+                    <p>Acesse ilimitadamente uma biblioteca em constante expansão com jogos marcados como <strong>Incluso na Assinatura</strong>. Cancele a qualquer momento sem fidelidade.</p>
                 </div>
                 <div class="servico-card compra">
-                    <h3>Loja de Compras</h3>
-                    <p>Compre qualquer título individualmente e mantenha na sua biblioteca para sempre.</p>
+                    <h3>Loja de Compras Avulsas</h3>
+                    <p>Adquira títulos individuais permanentemente para sua conta. Jogadores que possuem compras avulsas mantêm o acesso ao jogo mesmo sem assinatura ativa.</p>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- SEÇÃO: Catálogo -->
+        <h2 class="secao-titulo">Catálogo de Jogos</h2>
 
         <div class="filtros">
             <input type="text" id="campoBusca" placeholder="Buscar por nome do jogo...">
