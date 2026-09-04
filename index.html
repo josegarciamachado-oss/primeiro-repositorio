@@ -15,12 +15,13 @@
         body {
             background-color: #0d0e12;
             color: #e1e1e6;
-            padding: 30px 20px;
+            padding: 0; /* Remove padding do body para o banner ocupar toda a largura */
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
+            padding: 20px; /* Adiciona padding ao container principal */
         }
 
         header {
@@ -28,11 +29,28 @@
             margin-bottom: 40px;
         }
 
+        /* Estilização do Banner */
+        .banner-container {
+            width: 100%;
+            height: 300px; /* Altura ajustável do banner */
+            overflow: hidden;
+            border-bottom: 3px solid #9466ff;
+            margin-bottom: 20px;
+        }
+
+        .banner-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+            display: block;
+        }
+
         header h1 {
             font-size: 2.8rem;
             background: linear-gradient(90deg, #9466ff, #04d361);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-top: 10px;
             margin-bottom: 8px;
         }
 
@@ -259,13 +277,16 @@
     </style>
 </head>
 <body>
+    <div class="banner-container">
+        <img src="banner-pixelverse.png" alt="Banner PixelVerse Games - Mundos Digitais">
+    </div>
+
     <div class="container">
         <header>
             <h1>PixelVerse Games</h1>
             <p>Conectando jogadores aos melhores universos digitais</p>
         </header>
 
-        <!-- SEÇÃO: Sobre a Empresa -->
         <section class="sobre-empresa">
             <h2>Sobre a PixelVerse Games</h2>
             <p>
@@ -291,7 +312,6 @@
             </div>
         </section>
 
-        <!-- SEÇÃO: Como Funciona o Serviço -->
         <section class="servico-info">
             <h2>Como Funciona Nosso Serviço?</h2>
             <div class="servico-grid">
@@ -306,7 +326,6 @@
             </div>
         </section>
 
-        <!-- SEÇÃO: Catálogo -->
         <h2 class="secao-titulo">Catálogo de Jogos</h2>
 
         <div class="filtros">
@@ -331,6 +350,7 @@
     </div>
 
     <script>
+        // ... (O JavaScript permanece o mesmo do passo anterior)
         const jogos = [
             { titulo: "Cyber Odyssey 2077", genero: "RPG", preco: 149.90, inclusoNoPlano: true },
             { titulo: "Speed Racers Unlimited", genero: "Corrida", preco: 89.90, inclusoNoPlano: true },
