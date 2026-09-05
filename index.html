@@ -292,7 +292,7 @@
                     <p>Jogadores Ativos</p>
                 </div>
                 <div class="stat-card">
-                    <h3>100+</h3>
+                    <h3>230+</h3>
                     <p>Títulos no Catálogo</p>
                 </div>
                 <div class="stat-card">
@@ -349,7 +349,12 @@
     </div>
 
     <script>
-        const jogos = [
+        const generos = ["RPG", "Corrida", "Estratégia", "Ação", "Aventura", "Esporte", "Terror", "Simulação", "Luta", "Sobrevivência", "Puzzle"];
+        const prefixos = ["Cyber", "Pixel", "Neon", "Void", "Quantum", "Shadow", "Astra", "Solaris", "Hyper", "Chrono", "Dark", "Starlight", "Iron", "Mystic", "Shattered", "Deep", "Omega", "Alpha", "Apex", "Vortex", "Titan", "Phantom", "Rogue", "Elysium", "Genesis", "Nebula", "Velocity", "Aether", "Frost", "Infernal"];
+        const sufixos = ["Odyssey", "Protocol", "Hunter", "Clash", "Empire", "Nightmare", "Brawlers", "Island", "Core", "Abyss", "Siege", "Outbreak", "Alchemy", "Realm", "Echoes", "Drift", "Warfare", "Quest", "Legends", "Strike", "Horizon", "Ascension", "Tactics", "Vanguard", "Zero", "Frontier", "Chronicles", "Protocol", "Crusade", "Overdrive"];
+        const numerais = ["", " II", " III", " IV", " V", " 2077", " 2026", " Pro", " X", " Unlimited", " Online", " Evolution", " Reborn", " Prime"];
+
+        const jogosIniciais = [
             { titulo: "Cyber Odyssey 2077", genero: "RPG", preco: 149.90, inclusoNoPlano: true },
             { titulo: "Speed Racers Unlimited", genero: "Corrida", preco: 89.90, inclusoNoPlano: true },
             { titulo: "Galactic Legends", genero: "Estratégia", preco: 199.90, inclusoNoPlano: false },
@@ -381,6 +386,33 @@
             { titulo: "Chrono Echoes", genero: "Aventura", preco: 125.00, inclusoNoPlano: true },
             { titulo: "Hyper Speed Drift", genero: "Corrida", preco: 79.00, inclusoNoPlano: true }
         ];
+
+        const jogos = [...jogosIniciais];
+        const titulosExistentes = new Set(jogos.map(j => j.titulo));
+
+        let pIdx = 0, sIdx = 0, nIdx = 0, gIdx = 0;
+        
+        // Gera dinamicamente mais 200 jogos únicos para totalizar 230
+        while (jogos.length < 230) {
+            const p = prefixos[pIdx % prefixos.length];
+            const s = sufixos[sIdx % sufixos.length];
+            const n = numerais[nIdx % numerais.length];
+            const titulo = `${p} ${s}${n}`;
+
+            if (!titulosExistentes.has(titulo)) {
+                titulosExistentes.add(titulo);
+                const genero = generos[gIdx % generos.length];
+                const preco = parseFloat((Math.floor(Math.random() * 200) + 29.90).toFixed(2));
+                const inclusoNoPlano = jogos.length % 2 === 0;
+
+                jogos.push({ titulo, genero, preco, inclusoNoPlano });
+                gIdx++;
+            }
+
+            pIdx++;
+            if (pIdx % prefixos.length === 0) sIdx++;
+            if (sIdx % sufixos.length === 0) nIdx++;
+        }
 
         const container = document.getElementById('catalogo');
         const campoBusca = document.getElementById('campoBusca');
