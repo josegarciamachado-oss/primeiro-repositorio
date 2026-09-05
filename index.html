@@ -23,7 +23,6 @@
             margin: 0 auto;
         }
 
-        /* Estrutura do Cabeçalho com Logo */
         header {
             margin-bottom: 40px;
         }
@@ -57,7 +56,6 @@
             font-size: 1.1rem;
         }
 
-        /* Seção Sobre a Empresa */
         .sobre-empresa {
             background-color: #181920;
             border: 1px solid #2e303d;
@@ -107,7 +105,6 @@
             margin-bottom: 0;
         }
 
-        /* Seção Como Funciona o Serviço */
         .servico-info {
             background: linear-gradient(135deg, #181920 0%, #20222c 100%);
             border: 1px solid #2e303d;
@@ -152,7 +149,6 @@
             line-height: 1.4;
         }
 
-        /* Seção Filtros */
         .secao-titulo {
             font-size: 1.6rem;
             color: #ffffff;
@@ -192,7 +188,6 @@
             cursor: pointer;
         }
 
-        /* Grid do Catálogo */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -337,6 +332,11 @@
                 <option value="Ação">Ação</option>
                 <option value="Aventura">Aventura</option>
                 <option value="Esporte">Esporte</option>
+                <option value="Terror">Terror</option>
+                <option value="Simulação">Simulação</option>
+                <option value="Luta">Luta</option>
+                <option value="Sobrevivência">Sobrevivência</option>
+                <option value="Puzzle">Puzzle</option>
             </select>
             <select id="filtroPlano">
                 <option value="Todos">Todos os Planos</option>
@@ -358,7 +358,28 @@
             { titulo: "Pro Football 2026", genero: "Esporte", preco: 249.90, inclusoNoPlano: false },
             { titulo: "Pixel Dungeon Adventure", genero: "Aventura", preco: 49.90, inclusoNoPlano: true },
             { titulo: "Space Warfare", genero: "Estratégia", preco: 79.90, inclusoNoPlano: true },
-            { titulo: "Urban Drift", genero: "Corrida", preco: 59.90, inclusoNoPlano: true }
+            { titulo: "Urban Drift", genero: "Corrida", preco: 59.90, inclusoNoPlano: true },
+            { titulo: "Neon Samurai", genero: "Ação", preco: 110.00, inclusoNoPlano: true },
+            { titulo: "Astra Protocol", genero: "RPG", preco: 180.00, inclusoNoPlano: false },
+            { titulo: "Void Hunter", genero: "Ação", preco: 95.00, inclusoNoPlano: true },
+            { titulo: "Mech Clash", genero: "Estratégia", preco: 130.00, inclusoNoPlano: true },
+            { titulo: "Solaris Empire", genero: "Estratégia", preco: 210.00, inclusoNoPlano: false },
+            { titulo: "Phantasm Nightmare", genero: "Terror", preco: 85.00, inclusoNoPlano: true },
+            { titulo: "Flight Operator X", genero: "Simulação", preco: 140.00, inclusoNoPlano: false },
+            { titulo: "Street Brawlers V", genero: "Luta", preco: 160.00, inclusoNoPlano: true },
+            { titulo: "Wilderness Island", genero: "Sobrevivência", preco: 75.00, inclusoNoPlano: true },
+            { titulo: "Quantum Core", genero: "Puzzle", preco: 39.90, inclusoNoPlano: true },
+            { titulo: "Rally Horizon", genero: "Corrida", preco: 99.90, inclusoNoPlano: false },
+            { titulo: "Dark Abyss", genero: "Terror", preco: 115.00, inclusoNoPlano: false },
+            { titulo: "Starlight MMO", genero: "RPG", preco: 220.00, inclusoNoPlano: false },
+            { titulo: "Iron Siege", genero: "Estratégia", preco: 69.90, inclusoNoPlano: true },
+            { titulo: "Cyber Tennis Pro", genero: "Esporte", preco: 89.00, inclusoNoPlano: true },
+            { titulo: "Zombie Outbreak Z", genero: "Sobrevivência", preco: 105.00, inclusoNoPlano: true },
+            { titulo: "Mystic Alchemy", genero: "Puzzle", preco: 45.00, inclusoNoPlano: true },
+            { titulo: "Shattered Realm", genero: "Luta", preco: 135.00, inclusoNoPlano: false },
+            { titulo: "Deep Ocean Tycoon", genero: "Simulação", preco: 92.00, inclusoNoPlano: true },
+            { titulo: "Chrono Echoes", genero: "Aventura", preco: 125.00, inclusoNoPlano: true },
+            { titulo: "Hyper Speed Drift", genero: "Corrida", preco: 79.00, inclusoNoPlano: true }
         ];
 
         const container = document.getElementById('catalogo');
